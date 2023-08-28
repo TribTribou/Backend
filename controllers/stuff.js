@@ -51,6 +51,9 @@ exports.createThing = (req, res, next) => {
   const bookObject = JSON.parse(req.body.book);
   delete bookObject._id;
   delete bookObject._userId;
+
+  bookObject.averageRating = 0;
+
   const optimizedFileName = req.file.filename.replace(/\.\w+$/, '_optimized.jpg');
   const book = new Book({
       ...bookObject,
